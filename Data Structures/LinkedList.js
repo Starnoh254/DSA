@@ -19,6 +19,39 @@ class LinkedList {
     return this.size;
   }
 
+  insert(value, index) {
+    if (index < 0 || index > this.size) {
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const node = new Node(value);
+      let previous = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        previous = previous.next;
+      }
+      node.next = previous.next;
+      previous.next = node;
+      this.size++;
+    }
+  }
+  // linear time complexity  O(n)
+  append(value) {
+    const newNode = new Node(value);
+    if (this.isEmpty()) {
+      this.head = newNode;
+    } else {
+      let previous = this.head;
+      while (previous.next) {
+        previous = previous.next;
+      }
+      previous.next = newNode;
+    }
+    this.size++;
+  }
+
+  // constant time complexity  O(1)
   prepend(value) {
     const node = new Node(value);
     if (this.isEmpty()) {
@@ -29,11 +62,47 @@ class LinkedList {
     }
     this.size++;
   }
+
+  print() {
+    if (this.isEmpty()) {
+      console.log("The list is empty");
+    } else {
+      let currentNode = this.head;
+      let listValues = "";
+      while (currentNode) {
+        listValues += `${currentNode.value} `;
+        currentNode = currentNode.next;
+      }
+      console.log(listValues);
+    }
+  }
 }
 
 const list = new LinkedList();
 console.log(list.isEmpty()); // true
 console.log(list.getSize());
-list.prepend(10)
-list.prepend(20)
-list.prepend(30)
+
+list.print();
+
+// list.prepend(10);
+
+// list.prepend(20);
+// list.prepend(30);
+// list.print();
+
+// list.append(40);
+
+// list.print();
+
+list.insert(10 ,0)
+list.print()
+
+list.insert(20 , 0)
+list.print()
+
+list.insert(30 , 1)
+list.print()
+
+list.insert(40,2)
+list.print()
+list.getSize()
