@@ -81,6 +81,29 @@ class LinkedList {
     }
     this.size++;
   }
+  removeValue(value) {
+    if (this.isEmpty()) {
+      return null;
+    }
+
+    if (this.head.value == value) {
+      this.head = this.head.next;
+      this.size--;
+      return value;
+    } else {
+      let previous = this.head;
+      while (previous.next && previous.next.value !== value) {
+        previous = previous.next;
+      }
+      if (previous.next) {
+        const removeNode = previous.next;
+        previous.next = removeNode.next;
+        this.size -- 
+        return value                                  
+      }
+      return null                          
+    }
+  }
 
   print() {
     if (this.isEmpty()) {
@@ -126,9 +149,12 @@ list.insert(40, 2);
 list.print();
 list.getSize();
 
-console.log(list.removeFrom(10)) // null
-console.log(list.removeFrom(0))
-list.print()
+// console.log(list.removeFrom(10)); // null
+// console.log(list.removeFrom(0));
+// list.print();
 
-console.log(list.removeFrom(1))
-list.print()
+// console.log(list.removeFrom(1));
+list.print();
+
+list.removeValue(40);
+list.print();
