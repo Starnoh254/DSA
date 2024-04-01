@@ -19,6 +19,25 @@ class LinkedList {
     return this.size;
   }
 
+  removeFrom(index) {
+    if (index < 0 || index >= this.size) {
+      return null;
+    }
+    let removeNode;
+    if (index == 0) {
+      removeNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let previous = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        previous = previous.next;
+      }
+      removeNode = previous.next;
+      previous.next = removeNode.next;
+    }
+    this.size--;
+    return removeNode.value;
+  }
   insert(value, index) {
     if (index < 0 || index > this.size) {
       return;
@@ -94,15 +113,22 @@ list.print();
 
 // list.print();
 
-list.insert(10 ,0)
+list.insert(10, 0);
+list.print();
+
+list.insert(20, 0);
+list.print();
+
+list.insert(30, 1);
+list.print();
+
+list.insert(40, 2);
+list.print();
+list.getSize();
+
+console.log(list.removeFrom(10)) // null
+console.log(list.removeFrom(0))
 list.print()
 
-list.insert(20 , 0)
+console.log(list.removeFrom(1))
 list.print()
-
-list.insert(30 , 1)
-list.print()
-
-list.insert(40,2)
-list.print()
-list.getSize()
