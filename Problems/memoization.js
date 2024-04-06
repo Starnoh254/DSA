@@ -3,14 +3,16 @@
  * @return {Function}
  */
 function memoize(fn) {
-  let input = {};
+  let cache = {};
 
   return function (...args) {
-    if (input[args] in input) {
-      input[args] = fn(args);
-    } else {
-      return input[args];
+    const key = JSON.stringify(args);
+    if (key in cache) {
+      return cache[key];
     }
+
+    cache[key] = fn(...args);
+    return cache[key];
   };
 }
 
