@@ -70,6 +70,19 @@ class LinkedList {
     this.size++;
   }
 
+  search(value){
+    let currentNode = this.head;
+    let index = 0;
+    while (currentNode){
+      if(currentNode.value === value){
+        return index;
+      }
+      index ++;
+      currentNode= currentNode.next;
+    }
+    return -1;
+  }
+
   // constant time complexity  O(1)
   prepend(value) {
     const node = new Node(value);
@@ -157,4 +170,9 @@ list.getSize();
 list.print();
 
 list.removeValue(40);
+// list.removeValue(30);
+// list.removeValue(20);
+// list.removeValue(10);
 list.print();
+
+console.log(list.search(30));
