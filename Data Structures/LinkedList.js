@@ -131,6 +131,19 @@ class LinkedList {
       console.log(listValues);
     }
   }
+
+  reverse(){
+    let prev = null;
+    let current = this.head;
+
+    while(current){
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next
+    }
+    this.head = prev;
+  }
 }
 
 const list = new LinkedList();
@@ -169,10 +182,13 @@ list.getSize();
 // console.log(list.removeFrom(1));
 list.print();
 
-list.removeValue(40);
+// list.removeValue(40);
 // list.removeValue(30);
 // list.removeValue(20);
 // list.removeValue(10);
 list.print();
 
 console.log(list.search(30));
+
+list.reverse()
+list.print()

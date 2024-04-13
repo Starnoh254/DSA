@@ -10,7 +10,7 @@
 //   return '404 Not Found'
 // }
 
-console.log(twoSum([2, 7, 11, 15], 9));
+console.log(twoSum([2, 7, 11, 15], 26));
 
 function twoSum(arr, target) {
   let obj = {};
@@ -22,4 +22,6 @@ function twoSum(arr, target) {
       obj[n] = i;
     }
   }
+  return '404 Not Found'
+
 }
