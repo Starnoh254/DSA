@@ -8,6 +8,7 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
     this.size = 0;
   }
 
@@ -19,25 +20,38 @@ class LinkedList {
     return this.size;
   }
 
-  removeFrom(index) {
-    if (index < 0 || index >= this.size) {
+  removeFromFront() {
+    if (this.isEmpty()){
+      return null
+    }
+    const value = this.head.value;
+    this.head = this.head.next;
+    this.size --;
+    return value;
+  }
+
+  removeFromEnd(){
+    if(this.isEmpty()){
       return null;
     }
-    let removeNode;
-    if (index == 0) {
-      removeNode = this.head;
-      this.head = this.head.next;
-    } else {
-      let previous = this.head;
-      for (let i = 0; i < index - 1; i++) {
-        previous = previous.next;
+    const value = this.tail.value;
+    if(this.size === 1){
+      this.head = null;
+      this.tail = null;
+
+    }else {
+      let prev = this.head;
+      while (prev.next !== this.tail){
+        prev = prev.next;
       }
-      removeNode = previous.next;
-      previous.next = removeNode.next;
+      prev.next = null;
+      this.tail = prev;
     }
-    this.size--;
-    return removeNode.value;
-  }
+    this.size --;
+    return value;
+  
+    }
+  
   insert(value, index) {
     if (index < 0 || index > this.size) {
       return;
@@ -60,12 +74,10 @@ class LinkedList {
     const newNode = new Node(value);
     if (this.isEmpty()) {
       this.head = newNode;
+      this.tail = newNode;
     } else {
-      let previous = this.head;
-      while (previous.next) {
-        previous = previous.next;
-      }
-      previous.next = newNode;
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
     this.size++;
   }
@@ -88,6 +100,7 @@ class LinkedList {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
+      this.tail = node;
     } else {
       node.next = this.head;
       this.head = node;
@@ -152,43 +165,61 @@ console.log(list.getSize());
 
 list.print();
 
-// list.prepend(10);
-
-// list.prepend(20);
-// list.prepend(30);
-// list.print();
-
-// list.append(40);
-
-// list.print();
-
-list.insert(10, 0);
-list.print();
-
-list.insert(20, 0);
-list.print();
-
-list.insert(30, 1);
-list.print();
-
-list.insert(40, 2);
-list.print();
-list.getSize();
-
-// console.log(list.removeFrom(10)); // null
-// console.log(list.removeFrom(0));
-// list.print();
-
-// console.log(list.removeFrom(1));
-list.print();
-
-// list.removeValue(40);
-// list.removeValue(30);
-// list.removeValue(20);
-// list.removeValue(10);
-list.print();
-
-console.log(list.search(30));
-
-list.reverse()
+list.append(1)
+list.append(2)
+list.append(3)
+list.prepend(0)
 list.print()
+console.log(list.size)
+list.removeFromFront()
+list.print()
+console.log(list.size)
+
+list.removeFromEnd()
+list.removeFromEnd()
+list.removeFromFront()
+
+list.print()
+// console.log(list.head.value)
+console.log(list.tail.value)
+
+// // list.prepend(10);
+
+// // list.prepend(20);
+// // list.prepend(30);
+// // list.print();
+
+// // list.append(40);
+
+// // list.print();
+
+// list.insert(10, 0);
+// list.print();
+
+// list.insert(20, 0);
+// list.print();
+
+// list.insert(30, 1);
+// list.print();
+
+// list.insert(40, 2);
+// list.print();
+// list.getSize();
+
+// // console.log(list.removeFrom(10)); // null
+// // console.log(list.removeFrom(0));
+// // list.print();
+
+// // console.log(list.removeFrom(1));
+// list.print();
+
+// // list.removeValue(40);
+// // list.removeValue(30);
+// // list.removeValue(20);
+// // list.removeValue(10);
+// list.print();
+
+// console.log(list.search(30));
+
+// list.reverse()
+// list.print()
