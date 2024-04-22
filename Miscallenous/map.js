@@ -10,3 +10,5 @@ console.log(newMap.get("Profession"))
 for (let [key, value] of newMap.entries()) {
   console.log(`${key} : ${value}`);
 }
+
+console.log(Boolean("f"))
