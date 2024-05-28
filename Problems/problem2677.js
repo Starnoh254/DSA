@@ -13,7 +13,8 @@ var chunk = function (arr, size) {
 
   for (let i = 0; i < times; i++) {
     let inner_array = [];
-    for (let j = i * size; j < Math.min((i + 1) * size, arr.length); j++) {
+    let control = Math.min((i + 1) * size, arr.length)
+    for (let j = i * size; j < control; j++) {
       inner_array.push(arr[j]);
     }
     outer_array.push(inner_array);
@@ -23,6 +24,6 @@ var chunk = function (arr, size) {
 };
 
 let array = [8,5,3,2,6]
-let size = 6; 
+let size = 3; 
 
 console.log(chunk(array , size))
