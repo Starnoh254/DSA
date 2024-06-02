@@ -1,5 +1,4 @@
 // I am trying to understand the Map method
-
 // I am going to use the map method to generate the square of  numbers
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
