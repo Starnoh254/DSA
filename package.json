@@ -1,0 +1,22 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Starnoh254/DSA.git"
+  },
+  "author": "Starnoh John",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Starnoh254/DSA/issues"
+  },
+  "homepage": "https://github.com/Starnoh254/DSA#readme",
+  "dependencies": {
+    "zeptomail": "^6.0.0"
+  }
+}
