@@ -72,7 +72,7 @@ client
     to: [
       {
         email_address: {
-          address: "123",
+          address: "stajohn697@gmail.com",
           name: "Starnoh",
         },
       },

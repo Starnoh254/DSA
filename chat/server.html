@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Chat</title>
+    <!-- Include the Socket.IO client library before any custom scripts that use it -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <input id="messageInput" autocomplete="off" />
+    <button onclick="sendMessage()">Send</button>
+
+    <!-- Inline JavaScript for Socket.IO -->
+    <script>
+      // Ensure the Socket.IO client library is loaded and 'io' is defined
+      if (typeof io !== 'undefined') {
+        // Connect to the server
+        const socket = io();
+
+        // Listen for 'chat message' events from the server
+        socket.on('chat message', function(msg) {
+          const item = document.createElement('li');
+          item.textContent = msg;
+          document.getElementById('messages').appendChild(item);
+        });
+
+        // Define the sendMessage function
+        function sendMessage() {
+          const input = document.getElementById('messageInput');
+          socket.emit('chat message', input.value); // Use the socket instance initialized above
+          input.value = ''; // Clear the input field after sending the message
+        }
+      } else {
+        console.error("Socket.IO library not loaded");
+      }
+    </script>
+  </body>
+</html>
